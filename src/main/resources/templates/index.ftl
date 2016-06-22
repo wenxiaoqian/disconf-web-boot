@@ -13,7 +13,7 @@
 
         <#include "body/top.ftl">
 
-        <#include "body/content.ftl">
+        <#include "body/main_content.ftl">
 
         <#include "footer/footer.ftl">
     </div>

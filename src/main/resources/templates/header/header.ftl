@@ -19,3 +19,6 @@
 
 <!-- Custom styling plus plugins -->
 <link href="css/custom.min.css" rel="stylesheet">
+
+<!-- Select2 -->
+<link href="vendors/select2/dist/css/select2.min.css" rel="stylesheet">
