@@ -20,6 +20,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.github.knightliao.main.MainApplication;
+
 /**
  * Basic integration tests for FreeMarker application.
  *
@@ -27,7 +29,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author Andy Wilkinson
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(SampleWebFreeMarkerApplication.class)
+@SpringApplicationConfiguration(MainApplication.class)
 @WebIntegrationTest(randomPort = true)
 @DirtiesContext
 public class SampleWebFreeMarkerApplicationTests {
