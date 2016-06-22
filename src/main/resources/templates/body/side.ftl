@@ -2,31 +2,20 @@
     <div class="left_col scroll-view">
 
         <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title">Gentellela Alela!</a>
+            <a href="/" class="site_title">Disconf</a>
         </div>
 
-        <div class="profile"><!--img_2 -->
-            <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
-            </div>
-            <div class="profile_info">
-                <span>Welcome,</span>
+        <div class="clearfix"></div>
 
-                <h2>Anthony Mutisya</h2>
-            </div>
-        </div>
-
-        <br>
+        <br/>
 
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
             <div class="menu_section">
-                <h3>General</h3>
                 <ul class="nav side-menu">
-                    <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-home"></i> 配置管理 <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="index.html">Dashboard</a></li>
-                            <li><a href="index2.html">Dashboard2</a></li>
+                            <li><a href="index.html">配置管理</a></li>
                         </ul>
                     </li>
                 </ul>

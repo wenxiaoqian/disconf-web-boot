@@ -11,6 +11,8 @@
 
         <#include "body/side.ftl">
 
+        <#include "body/top.ftl">
+
         <#include "body/content.ftl">
 
         <#include "footer/footer.ftl">
