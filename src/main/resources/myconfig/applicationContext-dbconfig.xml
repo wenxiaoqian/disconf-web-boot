@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/tx   
+        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+    <bean id="kepler-jdbcConf"
+          class="com.github.knightliao.kongming.jdbroute.datasource.CustomizedPropertyConfigurer">
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath:jdbc-mysql.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="kepler-dataSource" scope="prototype"
+          class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass">
+            <value>${jdbc.driverClassName}</value>
+        </property>
+        <property name="maxPoolSize">
+            <value>${jdbc.maxPoolSize}</value>
+        </property>
+        <property name="minPoolSize">
+            <value>${jdbc.minPoolSize}</value>
+        </property>
+        <property name="idleConnectionTestPeriod">
+            <value>${jdbc.idleConnectionTestPeriod}</value>
+        </property>
+        <property name="maxIdleTime">
+            <value>${jdbc.maxIdleTime}</value>
+        </property>
+    </bean>
+
+    <!-- 动态数据源 -->
+    <bean id="kepler-shardDataSource" scope="prototype"
+          class="com.github.knightliao.kongming.jdbroute.datasource.ShardDataSource">
+    </bean>
+
+    <bean id="kepler-dataSourceFactory"
+          class="com.github.knightliao.kongming.jdbroute.datasource.ComboPooledDataSourceFactoryImpl">
+        <property name="propertyHolder" ref="kepler-jdbcConf"/>
+    </bean>
+
+    <bean id="kepler-dataSourceGenerator"
+          class="com.github.knightliao.kongming.jdbroute.datasource.DataSourceGenerator">
+        <property name="dataSourceFactory" ref="kepler-dataSourceFactory"/>
+        <property name="dataBaseName" value="kepler"/>
+    </bean>
+
+    <bean id="kepler-vdb" class="com.github.knightliao.kongming.jdbroute.datasource.VirtualDataSource">
+        <property name="dataSourceGenerator" ref="kepler-dataSourceGenerator"/>
+        <property name="shardNum" value="1"/>
+        <property name="dbName" value="kepler"/>
+    </bean>
+
+    <!-- jdbc template -->
+    <bean id="onedbJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="kepler-vdb"/>
+    </bean>
+
+    <!-- Transaction config -->
+    <bean id="onedbTransactionManager"
+          class="com.github.knightliao.kongming.jdbroute.datasource.RouteDataSourceTransactionManager">
+        <property name="dataSource" ref="kepler-vdb"/>
+    </bean>
+    <tx:annotation-driven transaction-manager="onedbTransactionManager"/>
+
+</beans>

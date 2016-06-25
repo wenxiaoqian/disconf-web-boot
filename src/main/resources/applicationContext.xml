@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd   
+        http://www.springframework.org/schema/beans   
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <!-- 定时器开关 -->
+    <task:annotation-driven executor="proExecutor"
+                            scheduler="proScheduler"/>
+    <task:executor id="proExecutor" pool-size="5"/>
+    <task:scheduler id="proScheduler" pool-size="10"/>
+
+    <!-- Validator设置 -->
+    <import resource="classpath*:myconfig/spring-servlet-validator.xml"/>
+
+    <!-- 拦截器配置 -->
+    <import resource="classpath*:myconfig/spring-servlet-interceptor.xml"/>
+
+    <!-- configs -->
+    <bean id="propertyConfigurerForProject1"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="order" value="1"/>
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath*:/jdbc-mysql.properties</value>
+                <value>classpath*:/application.properties</value>
+                <value>classpath*:/zoo.properties</value>
+                <value>classpath*:/redis-config.properties</value>
+                <value>classpath*:/myapplication.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="zooConfig"
+          class="com.github.knightliao.disconf.web.modules.zookeeper.config.ZooConfig">
+        <property name="zooHosts" value="${hosts}"/>
+        <property name="zookeeperUrlPrefix" value="${zookeeper_url_prefix}"/>
+    </bean>
+
+    <bean id="applicationPropertyConfig"
+          class="com.github.knightliao.disconf.web.config.ApplicationPropertyConfig">
+        <property name="emailHost" value="${EMAIL_HOST}"/>
+        <property name="emailPassword" value="${EMAIL_HOST_PASSWORD}"/>
+        <property name="emailUser" value="${EMAIL_HOST_USER}"/>
+        <property name="emailPort" value="${EMAIL_PORT}"/>
+        <property name="fromEmail" value="${DEFAULT_FROM_EMAIL}"/>
+        <property name="emailReceiver" value="${EMAIL_RECEIVER}"/>
+        <property name="emailMonitorOn" value="${EMAIL_MONITOR_ON}"/>
+        <property name="checkConsistencyOn" value="${CHECK_CONSISTENCY_ON}"/>
+        <property name="domain" value="${domain}"/>
+    </bean>
+
+    <!-- import -->
+    <import resource="classpath*:myconfig/applicationContext-cache.xml"/>
+    <import resource="classpath*:myconfig/applicationContext-springcache.xml"/>
+
+
+    <beans profile="production">
+        <import resource="classpath*:myconfig/applicationContext-dbconfig.xml"/>
+        <bean class="com.github.knightliao.disconf.web.modules.user.service.impl.RedisLoginImpl"/>
+        <bean class="com.github.knightliao.disconf.web.support.common.web.interceptor.RoleResourceAspect"/>
+        <bean class="com.github.knightliao.disconf.web.modules.zookeeper.service.impl.ZookeeperDriverImpl"/>
+    </beans>
+
+    <beans profile="rd">
+        <import resource="classpath*:myconfig/applicationContext-dbconfig.xml"/>
+        <bean class="com.github.knightliao.disconf.web.modules.user.service.impl.RedisLoginImplMock"/>
+        <bean class="com.github.knightliao.disconf.web.support.common.web.interceptor.RoleResourceAspectMock"/>
+        <bean class="com.github.knightliao.disconf.web.modules.zookeeper.service.impl.ZookeeperDriverMock"/>
+    </beans>
+
+</beans>
