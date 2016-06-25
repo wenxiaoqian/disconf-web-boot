@@ -11,14 +11,13 @@
 <!-- Font Awesome -->
 <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
 
-<!-- NProgress -->
-<link href="vendors/nprogress/nprogress.css" rel="stylesheet">
-
 <!-- bootstrap-wysiwyg -->
 <link href="vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
 
-<!-- Custom styling plus plugins -->
-<link href="css/custom.min.css" rel="stylesheet">
-
 <!-- Select2 -->
 <link href="vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="vendors/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
+<!-- Custom styling plus plugins -->
+<link href="css/custom.min.css" rel="stylesheet">
