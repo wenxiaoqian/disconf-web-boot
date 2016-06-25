@@ -86,12 +86,12 @@
                                     <table id="datatable-keytable" class="table table-striped table-bordered">
                                         <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>App</th>
+                                            <th>Key</th>
+                                            <th>配置内容</th>
+                                            <th>实例列表</th>
+                                            <th>修改时间</th>
+                                            <th>操作</th>
                                         </tr>
                                         </thead>
 
