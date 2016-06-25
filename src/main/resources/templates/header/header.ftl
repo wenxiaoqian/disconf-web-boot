@@ -6,7 +6,7 @@
 <title> Disconf-web Boot | </title>
 
 <!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Font Awesome -->
 <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
