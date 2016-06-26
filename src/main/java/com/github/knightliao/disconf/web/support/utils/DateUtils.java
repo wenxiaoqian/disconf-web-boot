@@ -888,9 +888,6 @@ public final class DateUtils {
      * @param
      *
      * @return 返回服务器时间的毫秒数
-     *
-     * @author zhangpingan
-     * @author zhangpingan mrd Beidou2.0.0
      */
     public static long getTimeInMillionSeconds() {
         Calendar c = Calendar.getInstance();
@@ -901,10 +898,6 @@ public final class DateUtils {
      * @param dateString
      * @param format1    ，如yyyyMMdd
      * @param format2    , 如yyyy/MM/dd
-     *
-     * @return
-     *
-     * @author zhangpingan
      */
     public static String formatDateString(String dateString, String format1, String format2) {
         if (dateString == null) {

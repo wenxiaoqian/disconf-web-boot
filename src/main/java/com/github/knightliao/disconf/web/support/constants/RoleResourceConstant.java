@@ -7,7 +7,6 @@ import java.util.Map;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * @author weiwei
  * @date 2013-12-20 下午6:29:00
  */
 public class RoleResourceConstant {

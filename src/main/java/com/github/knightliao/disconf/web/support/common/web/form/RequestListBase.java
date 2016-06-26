@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 import javax.validation.Valid;
 
+import com.github.knightliao.disconf.web.support.common.context.WebThreadContext;
 import com.github.knightliao.disconf.web.support.common.web.constraint.PageOrderConstraint;
-import com.github.knightliao.disconf.web.support.constants.web.FrontEndInterfaceConstant;
-import com.github.knightliao.orm.commons.ThreadContext;
 import com.github.knightliao.disconf.web.support.common.web.constraint.validation.PageOrderValidator;
+import com.github.knightliao.disconf.web.support.constants.web.FrontEndInterfaceConstant;
 
 /**
  * 所有的List请求的基类
@@ -81,7 +81,7 @@ public abstract class RequestListBase implements Serializable {
 
         public void setPageNo(int pageNo) {
             this.pageNo = pageNo;
-            ThreadContext.putContext(FrontEndInterfaceConstant.PAGE_NO, pageNo);
+            WebThreadContext.putContext(FrontEndInterfaceConstant.PAGE_NO, pageNo);
         }
 
         public int getPageSize() {
@@ -90,7 +90,7 @@ public abstract class RequestListBase implements Serializable {
 
         public void setPageSize(int pageSize) {
             this.pageSize = pageSize;
-            ThreadContext.putContext(FrontEndInterfaceConstant.PAGE_SIZE, pageSize);
+            WebThreadContext.putContext(FrontEndInterfaceConstant.PAGE_SIZE, pageSize);
         }
 
         public String getOrderBy() {
@@ -99,7 +99,7 @@ public abstract class RequestListBase implements Serializable {
 
         public void setOrderBy(String orderBy) {
             this.orderBy = orderBy;
-            ThreadContext.putContext(FrontEndInterfaceConstant.PAGE_ORDER_BY, orderBy);
+            WebThreadContext.putContext(FrontEndInterfaceConstant.PAGE_ORDER_BY, orderBy);
         }
 
         public String getOrder() {
@@ -108,7 +108,7 @@ public abstract class RequestListBase implements Serializable {
 
         public void setOrder(String order) {
             this.order = order;
-            ThreadContext.putContext(FrontEndInterfaceConstant.PAGE_ORDER, order);
+            WebThreadContext.putContext(FrontEndInterfaceConstant.PAGE_ORDER, order);
         }
 
     }

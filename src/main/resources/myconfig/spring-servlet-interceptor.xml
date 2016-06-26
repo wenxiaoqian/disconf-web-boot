@@ -4,18 +4,17 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-
     <mvc:interceptors>
 
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            <bean class="com.baidu.dsp.common.interceptor.session.SessionInterceptor">
+            <bean class="com.github.knightliao.disconf.web.support.common.web.interceptor.SessionInterceptor">
             </bean>
         </mvc:interceptor>
 
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            <bean class="com.baidu.dsp.common.interceptor.login.LoginInterceptor">
+            <bean class="com.github.knightliao.disconf.web.support.common.web.interceptor.LoginInterceptor">
                 <property name="notJsonPathList">
                     <list>
                         <value>/</value>
@@ -30,6 +29,7 @@
                         <value>/api/config/file</value>
                         <value>/api/config/list</value>
                         <value>/api/config/simple/list</value>
+                        <value>/welcome</value>
                     </list>
                 </property>
                 <property name="XONE_COOKIE_DOMAIN_STRING">

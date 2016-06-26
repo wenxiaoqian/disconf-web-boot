@@ -1,15 +1,14 @@
 package com.github.knightliao.disconf.web.modules.user.bo;
 
+import com.github.knightliao.disconf.web.support.constants.dao.Columns;
+import com.github.knightliao.disconf.web.support.constants.dao.DB;
 import com.github.knightliao.orm.commons.BaseObject;
 import com.github.knightliao.orm.jorm.annotation.Column;
 import com.github.knightliao.orm.jorm.annotation.Table;
-import com.github.knightliao.disconf.web.support.constants.dao.Columns;
-import com.github.knightliao.disconf.web.support.constants.dao.DB;
 
 import lombok.Data;
 
 /**
- * @author weiwei
  * @date 2013-12-24 下午2:43:37
  */
 @Data

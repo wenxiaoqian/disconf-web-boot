@@ -16,13 +16,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.github.knightliao.disconf.web.modules.user.dto.Visitor;
 import com.github.knightliao.disconf.web.modules.user.service.RoleResourceMgr;
+import com.github.knightliao.disconf.web.support.common.annotation.NoAuth;
 import com.github.knightliao.disconf.web.support.common.context.WebThreadContext;
 import com.github.knightliao.disconf.web.support.constants.RoleResourceConstant;
 import com.github.knightliao.disconf.web.support.exception.AccessDeniedException;
 
+import lombok.Data;
+
 /**
  * 判断用户是否具有请求方法的访问权
  */
+@Data
 @Aspect
 public class RoleResourceAspect {
 
@@ -48,7 +52,7 @@ public class RoleResourceAspect {
      *
      * @throws Throwable
      */
-    @Around("anyPublicMethod() && @annotation(requestMapping) && !@annotation(com.baidu.dsp.common.annotation.NoAuth)")
+    @Around("anyPublicMethod() && @annotation(requestMapping) && !@annotation(com.github.knightliao.disconf.web.support.common.annotation.NoAuth)")
     public Object decideAccess(ProceedingJoinPoint pjp, RequestMapping requestMapping) throws Throwable {
 
         // 获取method上的url，若未标注value则默认为空字符串
@@ -158,14 +162,6 @@ public class RoleResourceAspect {
         }
 
         return roleIdList;
-    }
-
-    public List<String> getNoAuthCheckUrl() {
-        return noAuthCheckUrl;
-    }
-
-    public void setNoAuthCheckUrl(List<String> noAuthCheckUrl) {
-        this.noAuthCheckUrl = noAuthCheckUrl;
     }
 
 }

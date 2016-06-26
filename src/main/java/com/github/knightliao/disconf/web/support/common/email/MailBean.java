@@ -17,10 +17,7 @@ import org.springframework.stereotype.Service;
 import com.github.knightliao.disconf.web.config.ApplicationPropertyConfig;
 
 /**
- * 邮件发送公共类
  *
- * @author modi
- * @version 1.0.0
  */
 @Service
 public class MailBean implements InitializingBean {

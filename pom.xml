@@ -18,7 +18,7 @@
     </parent>
 
     <properties>
-        <spring.version>4.1.7.RELEASE</spring.version>
+        <spring.version>4.2.5.RELEASE</spring.version>
     </properties>
 
     <dependencies>
@@ -45,6 +45,12 @@
             <groupId>com.baidu.disconf</groupId>
             <artifactId>disconf-core</artifactId>
             <version>2.6.35-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>2.7.4</version>
         </dependency>
 
         <dependency>
@@ -103,15 +109,27 @@
         </dependency>
 
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.6</version>
+        </dependency>
+
+        <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
             <version>2.2.2</version>
         </dependency>
 
         <dependency>
-            <groupId>c3p0</groupId>
-            <artifactId>c3p0</artifactId>
-            <version>0.9.1.2</version>
+            <groupId>commons-pool</groupId>
+            <artifactId>commons-pool</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.1.0</version>
         </dependency>
 
         <dependency>

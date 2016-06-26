@@ -10,6 +10,7 @@
                 <value>classpath:messages/sign-controller-info</value>
                 <value>classpath:messages/sign-service-info</value>
                 <value>classpath:messages/config-controller-info</value>
+                <value>classpath:messages/config-service-info</value>
                 <value>classpath:messages/app-service-info</value>
                 <value>classpath:messages/app-controller-info</value>
             </list>

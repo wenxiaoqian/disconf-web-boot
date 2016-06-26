@@ -5,7 +5,6 @@ import com.github.knightliao.disconf.web.support.exception.base.ModuleCode;
 import com.github.knightliao.disconf.web.support.exception.base.RuntimeGlobalException;
 
 /**
- * @author weiwei
  * @Description: the method is not accessible to current user
  */
 public class AccessDeniedException extends RuntimeGlobalException {
