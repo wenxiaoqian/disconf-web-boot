@@ -2,10 +2,8 @@
 
 <html lang="en">
 
-    <#include "../foot/footer.ftl">
-
     <body>
-    Dadte32: ${data.time ? time}
+    Dadte32: ${data.
 
     data message: ${data.message }
 

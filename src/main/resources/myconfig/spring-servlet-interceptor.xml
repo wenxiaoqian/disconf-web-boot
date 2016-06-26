@@ -13,7 +13,7 @@
         </mvc:interceptor>
 
         <mvc:interceptor>
-            <mvc:mapping path="/**"/>
+            <mvc:mapping path="/api/**"/>
             <bean class="com.github.knightliao.disconf.web.support.common.web.interceptor.LoginInterceptor">
                 <property name="notJsonPathList">
                     <list>
@@ -29,7 +29,6 @@
                         <value>/api/config/file</value>
                         <value>/api/config/list</value>
                         <value>/api/config/simple/list</value>
-                        <value>/welcome</value>
                     </list>
                 </property>
                 <property name="XONE_COOKIE_DOMAIN_STRING">
